@@ -2555,4 +2555,13 @@ img {
 @media (max-width: 900px) {
     .research-areas::before { width: 98vw; }
     .research-grid { flex-direction: column; gap: 2.2rem; }
+}
+
+.navbar-spacer {
+  height: 70px;
+}
+@media (max-width: 768px) {
+  .navbar-spacer {
+    height: 60px;
+  }
 } 
