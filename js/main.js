@@ -1,9 +1,42 @@
 // 네비게이션 토글
-const navToggle = document.getElementById('navToggle');
-const navMenu = document.querySelector('.nav-menu');
+document.addEventListener('DOMContentLoaded', function() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const body = document.body;
 
-navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
+    // 모바일 메뉴 토글
+    navToggle.addEventListener('click', function() {
+        navToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // 메뉴 항목 클릭 시 메뉴 닫기
+    document.querySelectorAll('.nav-menu li a').forEach(link => {
+        link.addEventListener('click', () => {
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            body.style.overflow = '';
+        });
+    });
+
+    // ESC 키로 메뉴 닫기
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            body.style.overflow = '';
+        }
+    });
+
+    // 화면 크기 변경 시 메뉴 상태 초기화
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            body.style.overflow = '';
+        }
+    });
 });
 
 // 스크롤 시 네비게이션 바 스타일 변경
