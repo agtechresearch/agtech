@@ -545,7 +545,9 @@ body {
         flex-direction: column;
         align-items: center;
         padding: 2rem 0;
-        transition: 0.3s;
+        transition: left 0.3s;
+        z-index: 2000;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
     .nav-menu.active {
@@ -562,6 +564,22 @@ body {
 
     .hero p {
         font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 901px) {
+    .nav-menu {
+        display: flex !important;
+        flex-direction: row;
+        position: static;
+        background: none;
+        box-shadow: none;
+        height: auto;
+        left: 0 !important;
+        padding: 0;
+    }
+    .nav-toggle {
+        display: none;
     }
 }
 
